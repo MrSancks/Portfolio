@@ -10,13 +10,13 @@ export default {
     extend: {
       colors: {
         // Paleta light
-        background: '#ffffff',
-        foreground: '#111111',
+        background: '#0f172a',
+        foreground: '#e2e8f0',
         // Paleta dark
-        darkbg: '#18181b',
-        darkfg: '#f4f4f5',
-        primary: '#2563eb',
-        secondary: '#64748b',
+        darkbg: '#020817',
+        darkfg: '#f8fafc',
+        primary: '#38bdf8',
+        secondary: '#6366f1',
       },
     },
   },

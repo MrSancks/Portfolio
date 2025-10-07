@@ -5,7 +5,7 @@
   "read_docs": "Read our docs",
   "learn": "Learn",
   "examples": "Examples",
-  "go_next": "Go to nextjs.org →",
+  "go_next": "Go to nextjs.org ->",
   "home": "Home",
   "about": "About",
   "experience": "Experience",
@@ -14,7 +14,7 @@
   "education": "Education",
   "contact": "Contact",
   "change_language": "Change language",
-  "welcome": "Welcome to my portfolio",
+  "welcome": "Cristian Rojas' Portfolio",
   "hero_subtitle": "Full stack developer focused on web experiences and microservices.",
-  "about_text": "I am a full stack developer with hands-on experience at ControlT, El Creativo Web and Diseños y Modas Ca y Ka, leading digital transformation and logistics solutions. I craft modern interfaces with Vue, React and Angular; build APIs and microservices with Node.js, .NET and Java; and run CI/CD pipelines with Docker and AWS. I love turning complex challenges into scalable, secure and delightful products."
+  "about_text": "I am Cristian Camilo Rojas Corredor, a Full Stack developer with experience designing and shipping modern, scalable and secure web applications. I have contributed to digital transformation and logistics projects using Vue.js (Quasar, Vuetify), React, Angular, Node.js, .NET and Java.\n\nMy experience includes:\n\n- Building responsive web interfaces optimized for user experience.\n- Creating RESTful APIs and microservices for high-performance platforms.\n- Bridging front-end and back-end to ensure consistency, functionality and scalability.\n- Running CI/CD pipelines with GitLab, Docker and AWS for automated releases.\n- Automating testing with Jest, JUnit and Postman.\n- Delivering clear documentation with Swagger and Confluence to ease collaboration.\n\nI aim to contribute my full stack expertise to global teams tackling high-impact projects with modern technologies. Additionally, at ControlT, El Creativo Web and Diseños y Modas Ca y Ka I strengthened Node.js/NestJS and .NET microservices, migrations to Vue + Quasar and automations with GitLab CI/CD, Docker and n8n to enhance delivery cadence, product quality and cross-team collaboration."
 }

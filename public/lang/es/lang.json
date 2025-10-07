@@ -5,7 +5,7 @@
   "read_docs": "Leer documentación",
   "learn": "Aprender",
   "examples": "Ejemplos",
-  "go_next": "Ir a nextjs.org →",
+  "go_next": "Ir a nextjs.org ->",
   "home": "Inicio",
   "about": "Sobre mí",
   "experience": "Experiencia",
@@ -14,7 +14,7 @@
   "education": "Educación",
   "contact": "Contacto",
   "change_language": "Cambiar idioma",
-  "welcome": "Bienvenido a mi portafolio",
+  "welcome": "Portafolio de Cristian Rojas",
   "hero_subtitle": "Desarrollador full stack especializado en experiencias web y microservicios.",
-  "about_text": "Soy un desarrollador full stack con trayectoria en ControlT, El Creativo Web y Diseños y Modas Ca y Ka, liderando iniciativas de transformación digital y logística. Diseño interfaces modernas con Vue, React y Angular; creo APIs y microservicios en Node.js, .NET y Java; y opero pipelines CI/CD con Docker y AWS. Me apasiona convertir retos complejos en productos escalables, seguros y fáciles de usar."
+  "about_text": "Soy Cristian Camilo Rojas Corredor, un Desarrollador Full Stack con experiencia en el diseño y desarrollo de aplicaciones web modernas, escalables y seguras. He participado en proyectos de transformación digital y logística, trabajando con tecnologías como Vue.js (Quasar, Vuetify), React, Angular, Node.js, .NET y Java.\n\nMi experiencia incluye:\n\n- Desarrollo de interfaces web responsivas y optimizadas para la experiencia de usuario.\n- Construcción de APIs RESTful y microservicios para plataformas de alto rendimiento.\n- Integración de front y backend asegurando consistencia visual, funcionalidad y escalabilidad.\n- CI/CD con GitLab, Docker y AWS para despliegues automáticos.\n- Testing automatizado con Jest, JUnit y Postman.\n- Documentación clara con Swagger y Confluence para facilitar la colaboración técnica.\n\nBusco aportar mis conocimientos en desarrollo full stack a un equipo global, participando en proyectos de alto impacto con tecnologías modernas. Además, en ControlT, El Creativo Web y Diseños y Modas Ca y Ka he consolidado microservicios con Node.js/NestJS y .NET, migraciones a Vue + Quasar y automatizaciones con GitLab CI/CD, Docker y n8n que fortalecen la entrega continua, la calidad del producto y la colaboración entre equipos."
 }
