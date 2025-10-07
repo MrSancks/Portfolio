@@ -1,15 +1,15 @@
 import { Project } from './ProjectTypes';
 import { projectAdapter } from '../../adapters/projects/projectAdapter';
 
-// Example: fetch projects from a static array (replace with API call if needed)
 const rawProjects = [
   {
     id: 'kinetra-route',
     title: 'Kinetra-Route',
     description:
-      'Plataforma modular de logística urbana con microservicios en .NET 8, mensajería con RabbitMQ/Redis y microfrontends en Angular, React, Vue y Svelte integrados con Module Federation. Incluye SignalR para monitoreo en vivo, CI/CD con GitHub Actions y despliegue en Railway/Render.',
+      'Plataforma modular de logística urbana con microservicios en .NET 8, mensajería con RabbitMQ/Redis y microfrontends en Angular, React, Vue y Svelte mediante Module Federation. Incluye SignalR para monitoreo en vivo, CI/CD con GitHub Actions y despliegue en Railway/Render.',
     url: 'https://github.com/MrSancks/Kinetra-Route',
-    image: 'https://bogota.gov.co/sites/default/files/styles/1050px/public/2021-03/domiciliarios_en_bogota.jpg',
+    image:
+      'https://bogota.gov.co/sites/default/files/styles/1050px/public/2021-03/domiciliarios_en_bogota.jpg',
   },
   {
     id: 'hayp',
@@ -20,12 +20,13 @@ const rawProjects = [
     image: 'https://images.pexels.com/photos/1714203/pexels-photo-1714203.jpeg',
   },
   {
-    id: 'agrolink',
-    title: 'AgroLink Hackathon',
+    id: 'metagro',
+    title: 'MetAgro Hackathon',
     description:
-      'Prototipo frontend orientado a vincular agricultores y empresas reduciendo la distancia física mediante tableros de oferta, mapas interactivos y flujos de negociación asistidos por datos en tiempo real para impulsar cadenas de abastecimiento justas.',
+      'Prototipo frontend orientado a vincular agricultores y empresas mediante tableros de oferta, mapas interactivos y flujos de negociación asistidos por datos en tiempo real para impulsar cadenas de abastecimiento justas.',
     url: 'https://github.com/MrSancks/front-hackaton',
-    image: 'https://st4.depositphotos.com/2422249/27666/i/950/depositphotos_276667318-stock-photo-businessman-farmer-holding-tablet-standing.jpg',
+    image:
+      'https://st4.depositphotos.com/2422249/27666/i/950/depositphotos_276667318-stock-photo-businessman-farmer-holding-tablet-standing.jpg',
   },
 ];
 
