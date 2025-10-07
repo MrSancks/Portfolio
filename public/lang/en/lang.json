@@ -1,0 +1,20 @@
+{
+  "get_started": "Get started by editing",
+  "save_and_see": "Save and see your changes instantly.",
+  "deploy_now": "Deploy now",
+  "read_docs": "Read our docs",
+  "learn": "Learn",
+  "examples": "Examples",
+  "go_next": "Go to nextjs.org →",
+  "home": "Home",
+  "about": "About",
+  "experience": "Experience",
+  "projects": "Projects",
+  "skills": "Skills",
+  "education": "Education",
+  "contact": "Contact",
+  "change_language": "Change language",
+  "welcome": "Welcome to my portfolio",
+  "hero_subtitle": "Full stack developer focused on web experiences and microservices.",
+  "about_text": "I am a full stack developer with hands-on experience at ControlT, El Creativo Web and Diseños y Modas Ca y Ka, leading digital transformation and logistics solutions. I craft modern interfaces with Vue, React and Angular; build APIs and microservices with Node.js, .NET and Java; and run CI/CD pipelines with Docker and AWS. I love turning complex challenges into scalable, secure and delightful products."
+}
