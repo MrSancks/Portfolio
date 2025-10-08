@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { ThemeToggle } from './components/ThemeToggle';
@@ -9,7 +9,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 interface NavItem {
   href: string;
   label: string;
-  icon: JSX.Element;
+  icon: ReactNode;
 }
 
 const iconBase = 'h-5 w-5';
