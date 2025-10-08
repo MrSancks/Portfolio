@@ -12,6 +12,7 @@ interface NavItem {
   icon: ReactNode;
 }
 
+
 const iconBase = 'h-5 w-5';
 
 export default function NavBar() {

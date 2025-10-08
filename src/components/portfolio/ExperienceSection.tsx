@@ -81,16 +81,30 @@ export default function ExperienceSection({ title }: { title: string }) {
 
   return (
     <section id="experience" className="scroll-mt-40">
-      <div className="section-surface animate-fade-up">
-        <h2 className="text-center text-3xl font-semibold text-white">{title}</h2>
-        <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="section-surface relative overflow-hidden animate-fade-up">
+        <div className="absolute -left-24 top-[-10%] h-72 w-72 rounded-full bg-violet-500/15 blur-3xl" aria-hidden />
+        <div className="absolute -right-32 bottom-[-20%] h-96 w-96 rounded-full bg-sky-400/10 blur-3xl" aria-hidden />
+        <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-semibold text-white lg:text-4xl">{title}</h2>
+            <p className="max-w-2xl text-sm leading-relaxed text-slate-200">
+              Diseñé soluciones completas: desde microservicios y pipelines CI/CD hasta interfaces inmersivas para logística, retail y analítica. Cada rol se centró en entregar métricas tangibles y escalar productos en producción.
+            </p>
+          </div>
+          <div className="inline-flex flex-col items-start gap-3 rounded-3xl border border-white/10 bg-white/[0.05] px-6 py-5 text-left text-white shadow-lg shadow-black/40 backdrop-blur">
+            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Disponibilidad</span>
+            <p className="text-2xl font-semibold">Remoto · Híbrido · LATAM / USA</p>
+            <span className="text-xs uppercase tracking-[0.3em] text-emerald-200">Listo para retos 2025</span>
+          </div>
+        </div>
+        <div className="relative mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
           {experiences.map((exp, idx) => (
             <article
               key={exp.id}
-              className="animate-fade-up group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-xl shadow-black/40 transition-all duration-500 hover:-translate-y-2 hover:border-white/30"
+              className="animate-fade-up group relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.05] pb-6 shadow-xl shadow-black/40 transition-all duration-500 hover:-translate-y-2 hover:border-white/30"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="relative h-52 w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
                 <Image
                   src={exp.image}
                   alt={`Logo ${exp.company}`}
@@ -102,20 +116,31 @@ export default function ExperienceSection({ title }: { title: string }) {
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${exp.accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
                 />
+                <svg
+                  className="pointer-events-none absolute -bottom-12 left-1/2 h-32 w-[140%] -translate-x-1/2 text-white/5"
+                  viewBox="0 0 400 120"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  <path d="M0 80Q50 30 120 46T240 84T400 40V140H0Z" fill="currentColor" />
+                </svg>
               </div>
-              <div className="relative z-10 flex flex-col gap-3 p-6">
+              <div className="relative z-10 flex flex-col gap-4 px-6 pt-8">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-white">{exp.company}</h3>
-                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">{exp.role}</p>
-                  <p className="text-xs text-slate-500">{exp.location}</p>
-                  <p className="text-xs text-slate-500">{exp.period}</p>
+                  <h3 className="text-xl font-semibold text-white">{exp.company}</h3>
+                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-200">{exp.role}</p>
+                  <p className="text-xs text-slate-300">{exp.location}</p>
+                  <p className="text-xs text-slate-400">{exp.period}</p>
                 </div>
+                <p className="text-sm leading-relaxed text-slate-200/80">
+                  {exp.details[0]}
+                </p>
                 <button
                   type="button"
                   onClick={() => setSelected(exp)}
-                  className="mt-2 inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-white opacity-100 shadow-sm shadow-black/40 transition-all duration-300 hover:bg-white/10 hover:shadow-md md:opacity-0 md:group-hover:opacity-100"
+                  className="mt-2 inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/[0.08] px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white shadow-sm shadow-black/40 transition-all duration-300 hover:bg-white/15 hover:shadow-md"
                 >
-                  Ver más
+                  Ver experiencia
                 </button>
               </div>
             </article>

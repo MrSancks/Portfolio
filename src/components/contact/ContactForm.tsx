@@ -18,37 +18,39 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="animate-fade-up mx-auto mt-8 flex w-full max-w-md flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-xl shadow-black/50 backdrop-blur"
+      className="animate-fade-up flex w-full flex-col gap-5 rounded-[2.25rem] border border-white/10 bg-white/[0.06] p-8 shadow-xl shadow-black/50 backdrop-blur"
     >
-      <input
-        name="name"
-        value={form.name}
-        onChange={handleChange}
-        placeholder="Nombre"
-        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
-        required
-      />
-      <input
-        name="email"
-        type="email"
-        value={form.email}
-        onChange={handleChange}
-        placeholder="Email"
-        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
-        required
-      />
+      <div className="grid gap-4 md:grid-cols-2">
+        <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Nombre"
+          className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/30"
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email"
+          className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/30"
+          required
+        />
+      </div>
       <textarea
         name="message"
         value={form.message}
         onChange={handleChange}
         placeholder="Mensaje"
         rows={4}
-        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
+        className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/30"
         required
       />
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.06] px-5 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+        className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.12] px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-black transition-all duration-300 hover:-translate-y-1 hover:bg-white"
       >
         Enviar
       </button>
