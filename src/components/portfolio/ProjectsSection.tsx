@@ -10,7 +10,7 @@ export default function ProjectsSection({ title }: ProjectsSectionProps) {
   return (
     <section id="projects" className="scroll-mt-40">
       <div className="section-surface animate-fade-up">
-        <h2 className="text-center text-3xl font-semibold text-slate-800 transition-colors duration-300 dark:text-slate-100">
+        <h2 className="text-center text-3xl font-semibold text-white">
           {title}
         </h2>
         <ProjectList />

@@ -15,10 +15,10 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
   return (
     <section id="about" className="scroll-mt-40">
       <div className="section-surface mx-auto max-w-3xl animate-fade-up">
-        <h2 className="text-center text-3xl font-semibold text-slate-800 transition-colors duration-300 dark:text-slate-100">
+        <h2 className="text-center text-3xl font-semibold text-white">
           {title}
         </h2>
-        <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600 transition-colors duration-300 dark:text-slate-200/90">
+        <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-300">
           {blocks.map((segment, index) => {
             if (segment.startsWith('- ')) {
               const items = segment
@@ -26,7 +26,7 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
                 .map((item) => item.trim().replace(/^- /, ''))
                 .filter(Boolean);
               return (
-                <ul key={index} className="list-disc space-y-2 text-left text-slate-600 transition-colors duration-300 dark:text-slate-200/90 md:pl-6">
+                <ul key={index} className="list-disc space-y-2 text-left text-slate-300 md:pl-6">
                   {items.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}

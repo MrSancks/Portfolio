@@ -25,7 +25,7 @@ export default function Home() {
     <div className="relative min-h-screen overflow-hidden">
       <AnimatedBackground />
       <NavBar />
-      <main className="relative z-10 mx-auto flex max-w-5xl flex-col gap-12 px-4 pb-16 pt-32 md:px-8">
+      <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 pb-32 pt-24 transition-all duration-500 sm:px-6 md:ml-32 md:px-10 md:pt-28 lg:ml-40">
         <HeroSection title={t('welcome')} subtitle={t('hero_subtitle')} />
         <AboutSection title={t('about')} content={t('about_text')} />
         <ExperienceSection title={t('experience')} />

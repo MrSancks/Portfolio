@@ -18,14 +18,14 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="animate-fade-up mx-auto mt-8 flex w-full max-w-md flex-col gap-4 rounded-2xl border border-white/30 bg-white/80 p-6 shadow-lg shadow-slate-900/10 backdrop-blur dark:border-white/10 dark:bg-slate-900/70"
+      className="animate-fade-up mx-auto mt-8 flex w-full max-w-md flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-xl shadow-black/50 backdrop-blur"
     >
       <input
         name="name"
         value={form.name}
         onChange={handleChange}
         placeholder="Nombre"
-        className="w-full rounded-xl border border-white/40 bg-white/60 px-4 py-2 text-sm text-slate-700 outline-none transition-all duration-300 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-300 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-100"
+        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
         required
       />
       <input
@@ -34,7 +34,7 @@ export default function ContactForm() {
         value={form.email}
         onChange={handleChange}
         placeholder="Email"
-        className="w-full rounded-xl border border-white/40 bg-white/60 px-4 py-2 text-sm text-slate-700 outline-none transition-all duration-300 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-300 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-100"
+        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
         required
       />
       <textarea
@@ -43,16 +43,16 @@ export default function ContactForm() {
         onChange={handleChange}
         placeholder="Mensaje"
         rows={4}
-        className="w-full rounded-xl border border-white/40 bg-white/60 px-4 py-2 text-sm text-slate-700 outline-none transition-all duration-300 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-300 dark:border-white/10 dark:bg-slate-800/70 dark:text-slate-100"
+        className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-2 text-sm text-slate-200 outline-none transition-all duration-300 focus:border-white/40 focus:bg-black/40"
         required
       />
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400 px-5 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-slate-900/20 transition-transform duration-300 hover:scale-[1.02]"
+        className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.06] px-5 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
       >
         Enviar
       </button>
-      {sent && <p className="animate-fade-up text-center text-sm font-medium text-emerald-500">¡Mensaje enviado!</p>}
+      {sent && <p className="animate-fade-up text-center text-sm font-medium text-slate-200">¡Mensaje enviado!</p>}
     </form>
   );
 }
