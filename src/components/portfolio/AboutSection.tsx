@@ -1,12 +1,28 @@
 'use client';
-import React from 'react';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface AboutSectionProps {
   title: string;
   content: string;
 }
 
+interface SidebarContent {
+  tag: string;
+  title: string;
+  description: string;
+  differentialTitle: string;
+  differentialDescription: string;
+  chips: string[];
+}
+
 export default function AboutSection({ title, content }: AboutSectionProps) {
+  const { t, i18n } = useTranslation('lang');
+  const sidebar = useMemo(
+    () => t('about.sidebar', { returnObjects: true }) as SidebarContent,
+    [i18n.language, t],
+  );
+
   const blocks = content
     .split('\n\n')
     .map((segment) => segment.trim())
@@ -28,9 +44,12 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
                     .map((item) => item.trim().replace(/^- /, ''))
                     .filter(Boolean);
                   return (
-                    <ul key={index} className="grid gap-3 rounded-3xl border border-white/10 bg-black/40 p-6 shadow-xl shadow-black/40 backdrop-blur">
-                      {items.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-sm leading-relaxed text-slate-100">
+                    <ul
+                      key={`list-${index}`}
+                      className="grid gap-3 rounded-3xl border border-white/10 bg-black/40 p-6 shadow-xl shadow-black/40 backdrop-blur"
+                    >
+                      {items.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-slate-100">
                           <span className="mt-1 inline-flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-emerald-300" />
                           <span>{item}</span>
                         </li>
@@ -40,7 +59,7 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
                 }
 
                 return (
-                  <p key={index} className="text-left text-slate-200">
+                  <p key={`paragraph-${index}`} className="text-left text-slate-200">
                     {segment}
                   </p>
                 );
@@ -49,11 +68,7 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
           </div>
           <aside className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/0 to-white/10 p-8 shadow-2xl shadow-black/40 backdrop-blur">
             <div className="absolute inset-0 opacity-70">
-              <svg
-                viewBox="0 0 400 400"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-full w-full text-white/10"
-              >
+              <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" className="h-full w-full text-white/10">
                 <defs>
                   <linearGradient id="about-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="rgba(16,185,129,0.35)" />
@@ -78,27 +93,19 @@ export default function AboutSection({ title, content }: AboutSectionProps) {
             </div>
             <div className="relative z-10 flex h-full flex-col gap-6">
               <header>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">
-                  Impacto en equipos
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">
-                  Experiencias digitales que aceleran negocios
-                </h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">{sidebar.tag}</p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">{sidebar.title}</h3>
               </header>
-              <p className="text-sm leading-relaxed text-slate-100/90">
-                Lidero soluciones donde convergen UX, arquitectura limpia y automatización. Trabajo con squads ágiles para crear productos que resuelven retos reales en logística, retail y finanzas.
-              </p>
+              <p className="text-sm leading-relaxed text-slate-100/90">{sidebar.description}</p>
               <div className="grid gap-4">
                 <div className="rounded-2xl border border-white/15 bg-white/[0.08] p-4 text-slate-100 shadow-lg shadow-black/40">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">
-                    Diferencial
+                    {sidebar.differentialTitle}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed">
-                    Traducción clara de necesidades de negocio a roadmaps técnicos priorizados, asegurando entregas constantes y medibles.
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed">{sidebar.differentialDescription}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {['Arquitectura limpia', 'Bancos de pruebas', 'Observabilidad', 'Automatización'].map((tag) => (
+                  {sidebar.chips.map((tag) => (
                     <span key={tag} className="chip bg-white/10 text-xs uppercase tracking-[0.25em]">
                       {tag}
                     </span>

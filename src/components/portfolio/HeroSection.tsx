@@ -1,20 +1,16 @@
 'use client';
 import React, { useEffect, useMemo, useState } from 'react';
-
 interface HeroSectionProps {
   title: string;
   subtitle: string;
 }
-
 interface HeroStat {
   value: string;
   label: string;
 }
-
 export default function HeroSection({ title, subtitle }: HeroSectionProps) {
   const [displayTitle, setDisplayTitle] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-
   const stats: HeroStat[] = useMemo(
     () => [
       { value: '+25', label: 'Proyectos y productos entregados end-to-end' },
@@ -23,32 +19,35 @@ export default function HeroSection({ title, subtitle }: HeroSectionProps) {
     ],
     [],
   );
-
-  useEffect(() => {
-    setDisplayTitle('');
-    setIsTyping(true);
-
-    let index = 0;
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-    const interval = setInterval(() => {
-      index += 1;
-      setDisplayTitle(title.slice(0, index));
-
-      if (index >= title.length) {
-        clearInterval(interval);
-        timeoutId = setTimeout(() => setIsTyping(false), 500);
-      }
-    }, 70);
-
-    return () => {
+useEffect(() => {
+  setDisplayTitle('');
+  setIsTyping(true);
+  let i = 0;
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+  // Romper a los 30 caracteres (ajústalo si quieres)
+  const BREAK_AT = 21;
+  const interval = setInterval(() => {
+    i += 1;
+    let text: string;
+    if (i <= BREAK_AT) {
+      text = title.slice(0, i);
+    } else {
+      // Mantener SIEMPRE el salto de línea desde aquí en adelante
+      const left = title.slice(0, BREAK_AT);
+      const right = title.slice(BREAK_AT, i);
+      text = left + '\n' + right;
+    }
+    setDisplayTitle(text);
+    if (i >= title.length) {
       clearInterval(interval);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, [title]);
-
+      timeoutId = setTimeout(() => setIsTyping(false), 500);
+    }
+  }, 70);
+  return () => {
+    clearInterval(interval);
+    if (timeoutId) clearTimeout(timeoutId);
+  };
+}, [title]);
   return (
     <section id="home" className="scroll-mt-40">
       <div className="relative overflow-hidden rounded-[2.75rem] border border-white/10 bg-gradient-to-br from-white/5 via-white/0 to-white/5 shadow-[0_40px_120px_-30px_rgba(15,15,15,0.9)] animate-fade-up">
@@ -62,7 +61,7 @@ export default function HeroSection({ title, subtitle }: HeroSectionProps) {
             </span>
             <div>
               <h1
-                className={`text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl ${
+                className={`text-4xl font-black leading-tight text-white sm:text-4xl lg:text-5xl whitespace-pre-line${
                   isTyping ? 'animate-typewriter pr-1' : ''
                 }`}
                 aria-label={title}

@@ -2,6 +2,7 @@
 'use client';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ThemeToggleProps {
   className?: string;
@@ -12,6 +13,7 @@ const iconBase = 'h-5 w-5';
 export function ThemeToggle({ className = '' }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation('lang');
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -21,7 +23,7 @@ export function ThemeToggle({ className = '' }: ThemeToggleProps) {
   return (
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      aria-label="Cambiar tema"
+      aria-label={t('themeToggle.ariaLabel')}
       className={`flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-200 transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:text-white ${className}`}
     >
       {isDark ? (

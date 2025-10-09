@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ReactNode, useMemo } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { ThemeToggle } from './components/ThemeToggle';
@@ -12,164 +12,144 @@ interface NavItem {
   icon: ReactNode;
 }
 
-
 const iconBase = 'h-5 w-5';
 
 export default function NavBar() {
   const { t } = useTranslation('lang');
 
-  const items: NavItem[] = useMemo(
-    () => [
-      {
-        href: '#home',
-        label: t('home'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 9.75 12 3l8.25 6.75V20a1.25 1.25 0 0 1-1.25 1.25h-4.75V14h-4.5v7.25H5A1.25 1.25 0 0 1 3.75 20z"
-            />
-          </svg>
-        ),
-      },
-      {
-        href: '#about',
-        label: t('about'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 12.75a3.75 3.75 0 1 0-3.75-3.75A3.75 3.75 0 0 0 12 12.75zm0 2.5c-3.525 0-6.75 1.838-6.75 4.125V21h13.5v-1.625c0-2.287-3.225-4.125-6.75-4.125z"
-            />
-          </svg>
-        ),
-      },
-      {
-        href: '#experience',
-        label: t('experience'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7.5 7.5V6A1.5 1.5 0 0 1 9 4.5h6A1.5 1.5 0 0 1 16.5 6v1.5m-9 0h-3A1.5 1.5 0 0 0 3 9v8.25A1.75 1.75 0 0 0 4.75 19h14.5A1.75 1.75 0 0 0 21 17.25V9a1.5 1.5 0 0 0-1.5-1.5h-3m-9 0h9"
-            />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6" />
-          </svg>
-        ),
-      },
-      {
-        href: '#projects',
-        label: t('projects'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4 7.75 8-4.5 8 4.5m-14 4.5 6 3.375m10-3.375-6 3.375"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4 16.25 8 4.5 8-4.5m-8-4.5v9"
-            />
-          </svg>
-        ),
-      },
-      {
-        href: '#skills',
-        label: t('skills'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6.75 3.75h10.5m-10.5 0A1.5 1.5 0 0 0 5.25 5.25v13.5A1.5 1.5 0 0 0 6.75 20.25h10.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5m-10.5 0v16.5m0-10.5h10.5"
-            />
-          </svg>
-        ),
-      },
-      {
-        href: '#education',
-        label: t('education'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m3 7 9-4 9 4-9 4z"
-            />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 9.5V15a7.5 7.5 0 0 0 15 0V9.5" />
-          </svg>
-        ),
-      },
-      {
-        href: '#contact',
-        label: t('contact'),
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className={iconBase}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h9"
-            />
-          </svg>
-        ),
-      },
-    ],
-    [t]
-  );
+  const items: NavItem[] = [
+    {
+      href: '#home',
+      label: t('sections.home'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3.75 9.75 12 3l8.25 6.75V20a1.25 1.25 0 0 1-1.25 1.25h-4.75V14h-4.5v7.25H5A1.25 1.25 0 0 1 3.75 20z"
+          />
+        </svg>
+      ),
+    },
+    {
+      href: '#about',
+      label: t('sections.about'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 12.75a3.75 3.75 0 1 0-3.75-3.75A3.75 3.75 0 0 0 12 12.75zm0 2.5c-3.525 0-6.75 1.838-6.75 4.125V21h13.5v-1.625c0-2.287-3.225-4.125-6.75-4.125z"
+          />
+        </svg>
+      ),
+    },
+    {
+      href: '#experience',
+      label: t('sections.experience'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M7.5 7.5V6A1.5 1.5 0 0 1 9 4.5h6A1.5 1.5 0 0 1 16.5 6v1.5m-9 0h-3A1.5 1.5 0 0 0 3 9v8.25A1.75 1.75 0 0 0 4.75 19h14.5A1.75 1.75 0 0 0 21 17.25V9a1.5 1.5 0 0 0-1.5-1.5h-3m-9 0h9"
+          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6" />
+        </svg>
+      ),
+    },
+    {
+      href: '#projects',
+      label: t('sections.projects'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="m4 7.75 8-4.5 8 4.5m-14 4.5 6 3.375m10-3.375-6 3.375" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m4 16.25 8 4.5 8-4.5m-8-4.5v9" />
+        </svg>
+      ),
+    },
+    {
+      href: '#skills',
+      label: t('sections.skills'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6.75 3.75h10.5m-10.5 0A1.5 1.5 0 0 0 5.25 5.25v13.5A1.5 1.5 0 0 0 6.75 20.25h10.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5m-10.5 0v16.5m0-10.5h10.5"
+          />
+        </svg>
+      ),
+    },
+    {
+      href: '#education',
+      label: t('sections.education'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="m3 7 9-4 9 4-9 4z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 9.5V15a7.5 7.5 0 0 0 15 0V9.5" />
+        </svg>
+      ),
+    },
+    {
+      href: '#contact',
+      label: t('sections.contact'),
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          className={iconBase}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h9" />
+        </svg>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -179,9 +159,9 @@ export default function NavBar() {
             href="#home"
             className="group relative flex h-14 w-14 items-center justify-center rounded-3xl border border-white/20 bg-white/[0.05] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
           >
-            <span className="text-xl font-semibold tracking-[0.3em]">S</span>
+            <span className="text-xl font-semibold tracking-[0.3em]">{t('navigation.brandInitials')}</span>
             <span className="pointer-events-none absolute left-16 rounded-2xl bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-black opacity-0 shadow-lg shadow-black/50 transition-all duration-200 group-hover:left-20 group-hover:opacity-100">
-              Sanckas
+              {t('navigation.brandTooltip')}
             </span>
           </Link>
           <nav className="flex flex-col items-center gap-6">
@@ -206,13 +186,13 @@ export default function NavBar() {
               <LanguageSwitcher />
             </div>
             <span className="pointer-events-none absolute left-14 rounded-2xl bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-black opacity-0 shadow-lg shadow-black/50 transition-all duration-200 group-hover:left-20 group-hover:opacity-100">
-              Idioma
+              {t('navigation.languageTooltip')}
             </span>
           </div>
           <div className="group relative">
             <ThemeToggle />
             <span className="pointer-events-none absolute left-14 rounded-2xl bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-black opacity-0 shadow-lg shadow-black/50 transition-all duration-200 group-hover:left-20 group-hover:opacity-100">
-              Tema
+              {t('navigation.themeTooltip')}
             </span>
           </div>
         </div>

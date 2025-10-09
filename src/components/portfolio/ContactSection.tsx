@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ContactForm from '../contact/ContactForm';
 
 interface ContactSectionProps {
@@ -7,6 +7,13 @@ interface ContactSectionProps {
 }
 
 export default function ContactSection({ title }: ContactSectionProps) {
+  const { t } = useTranslation('lang');
+  const intro = t('contact.intro');
+  const availabilityLabel = t('contact.availabilityLabel');
+  const availabilityValue = t('contact.availabilityValue');
+  const emailLabel = t('contact.emailLabel');
+  const sessionNote = t('contact.sessionNote');
+
   return (
     <section id="contact" className="scroll-mt-40">
       <div className="section-surface relative overflow-hidden animate-fade-up">
@@ -15,12 +22,10 @@ export default function ContactSection({ title }: ContactSectionProps) {
         <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <h2 className="text-3xl font-semibold text-white lg:text-4xl">{title}</h2>
-            <p className="text-sm leading-relaxed text-slate-200">
-              Cuéntame sobre tu reto: automatización, migración de arquitecturas, nuevas features o lanzamientos completos. Respondo en menos de 24 horas.
-            </p>
+            <p className="text-sm leading-relaxed text-slate-200">{intro}</p>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 text-white shadow-xl shadow-black/40">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Disponibilidad</p>
-              <p className="mt-2 text-2xl font-semibold">Consultorías y desarrollo end-to-end</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">{availabilityLabel}</p>
+              <p className="mt-2 text-2xl font-semibold">{availabilityValue}</p>
               <div className="mt-4 grid gap-4 text-sm text-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-black/40">
@@ -35,8 +40,11 @@ export default function ContactSection({ title }: ContactSectionProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8m-18 8h18" />
                     </svg>
                   </div>
-                  <a href="mailto:cristiancamilo7890@gmail.com" className="text-sm text-slate-100 underline-offset-4 hover:underline">
-                    cristiancamilo7890@gmail.com
+                  <a
+                    href={`mailto:${emailLabel}`}
+                    className="text-sm text-slate-100 underline-offset-4 hover:underline"
+                  >
+                    {emailLabel}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
@@ -52,7 +60,7 @@ export default function ContactSection({ title }: ContactSectionProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8m-4 12v-4m-7 0a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z" />
                     </svg>
                   </div>
-                  <span>Agenda una sesión estratégica de 30 minutos.</span>
+                  <span>{sessionNote}</span>
                 </div>
               </div>
             </div>

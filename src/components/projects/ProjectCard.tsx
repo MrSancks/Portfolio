@@ -1,11 +1,17 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  url: string;
   image: string;
   highlight?: string;
   tags?: string[];
+  url?: string;
+  period?: string;
+  links?: { href: string; label: string }[];
 }
 
 interface ProjectCardProps {
@@ -15,6 +21,64 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index = 0, featured = false }: ProjectCardProps) {
+  const { t } = useTranslation('lang');
+  const singleCtaLabel = t('projects.cardCta');
+
+  const renderLinks = () => {
+    if (project.links?.length) {
+      return (
+        <div className="flex flex-wrap gap-2">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/15"
+            >
+              {link.label}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                className="h-4 w-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m9 6 6 6-6 6" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      );
+    }
+
+    if (project.url) {
+      return (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/15"
+        >
+          {singleCtaLabel}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            className="h-4 w-4"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <article
       className={`animate-fade-up group relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.05] shadow-xl shadow-black/50 transition-all duration-500 hover:-translate-y-2 hover:border-white/30 hover:shadow-black/60 ${
@@ -40,6 +104,9 @@ export default function ProjectCard({ project, index = 0, featured = false }: Pr
       </div>
       <div className="relative z-10 mt-6 space-y-4 text-slate-300">
         <h3 className={`font-semibold text-white ${featured ? 'text-2xl lg:text-3xl' : 'text-xl'}`}>{project.title}</h3>
+        {project.period ? (
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{project.period}</p>
+        ) : null}
         <p className="text-sm leading-relaxed text-slate-300/90">{project.description}</p>
         {project.tags ? (
           <div className="flex flex-wrap gap-2">
@@ -50,24 +117,7 @@ export default function ProjectCard({ project, index = 0, featured = false }: Pr
             ))}
           </div>
         ) : null}
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/15"
-        >
-          Ver proyecto
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className="h-4 w-4"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="m9 6 6 6-6 6" />
-          </svg>
-        </a>
+        {renderLinks()}
       </div>
       <div className="absolute inset-x-10 top-0 h-1 bg-gradient-to-r from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </article>

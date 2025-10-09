@@ -1,7 +1,32 @@
 'use client';
-import React from 'react';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+interface FocusItem {
+  category: string;
+  topic: string;
+}
+
+interface DegreeInfo {
+  label: string;
+  name: string;
+  institution: string;
+  period: string;
+  highlights: string[];
+}
 
 export default function EducationSection({ title }: { title: string }) {
+  const { t, i18n } = useTranslation('lang');
+  const focus = useMemo(
+    () => t('education.focus', { returnObjects: true }) as FocusItem[],
+    [i18n.language, t],
+  );
+  const degree = useMemo(
+    () => t('education.degree', { returnObjects: true }) as DegreeInfo,
+    [i18n.language, t],
+  );
+  const intro = t('education.intro');
+
   return (
     <section id="education" className="scroll-mt-40">
       <div className="section-surface relative overflow-hidden animate-fade-up">
@@ -10,15 +35,10 @@ export default function EducationSection({ title }: { title: string }) {
         <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-5">
             <h2 className="text-3xl font-semibold text-white lg:text-4xl">{title}</h2>
-            <p className="text-sm leading-relaxed text-slate-200">
-              Formación profesional que respalda la práctica: bases sólidas en ingeniería de software, arquitectura, metodologías ágiles y analítica.
-            </p>
+            <p className="text-sm leading-relaxed text-slate-200">{intro}</p>
             <div className="grid gap-4 sm:grid-cols-2">
-              {['Arquitectura limpia', 'Metodologías ágiles'].map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 text-white shadow-lg shadow-black/40"
-                >
+              {focus.map((item) => (
+                <div key={item.topic} className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 text-white shadow-lg shadow-black/40">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-black/40">
                       <svg
@@ -33,10 +53,8 @@ export default function EducationSection({ title }: { title: string }) {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">
-                        {index === 0 ? 'Diseño' : 'Liderazgo'}
-                      </p>
-                      <p className="text-sm text-slate-100">{item}</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{item.category}</p>
+                      <p className="text-sm text-slate-100">{item.topic}</p>
                     </div>
                   </div>
                 </div>
@@ -45,11 +63,7 @@ export default function EducationSection({ title }: { title: string }) {
           </div>
           <div className="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.05] p-8 shadow-2xl shadow-black/50">
             <div className="absolute inset-0 opacity-80">
-              <svg
-                viewBox="0 0 420 260"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-full w-full text-white/10"
-              >
+              <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" className="h-full w-full text-white/10">
                 <defs>
                   <linearGradient id="education-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="rgba(56,189,248,0.35)" />
@@ -64,16 +78,14 @@ export default function EducationSection({ title }: { title: string }) {
               </svg>
             </div>
             <div className="relative z-10 space-y-4 text-slate-100">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Título</p>
-              <h3 className="text-2xl font-semibold text-white">Tecnólogo en desarrollo de software</h3>
-              <p className="text-sm text-slate-300">
-                Corporación Universitaria Minuto de Dios · Villavicencio, Colombia
-              </p>
-              <p className="text-xs uppercase tracking-[0.3em] text-emerald-200">Jun 2021 – May 2024 · Promedio 4.4/5</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">{degree.label}</p>
+              <h3 className="text-2xl font-semibold text-white">{degree.name}</h3>
+              <p className="text-sm text-slate-300">{degree.institution}</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-emerald-200">{degree.period}</p>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-200">
-                <li>• Construcción de servicios backend, apps móviles y experiencias web con enfoque en escalabilidad.</li>
-                <li>• Pruebas automatizadas, DevOps y despliegue en la nube integrados al currículo.</li>
-                <li>• Liderazgo de proyectos ágiles y participación en ferias de innovación académica.</li>
+                {degree.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
           </div>

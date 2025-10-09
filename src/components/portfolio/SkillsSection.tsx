@@ -1,5 +1,6 @@
 'use client';
-import React from 'react';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface SkillsSectionProps {
   title: string;
@@ -10,43 +11,15 @@ interface SkillGroup {
   items: string[];
 }
 
-const skillGroups: SkillGroup[] = [
-  {
-    label: 'Stack principal',
-    items: [
-      'Node',
-      '.NET',
-      'Express',
-      'Java',
-      'REST APIs',
-      'SQL Server',
-      'MongoDB',
-      'PHP',
-      'Angular',
-      'Python',
-      'React',
-      'Vue',
-      'Redux',
-      'Firebase',
-      'React Native',
-      'Laravel',
-    ],
-  },
-  {
-    label: 'Testing',
-    items: ['Pruebas funcionales', 'Postman', 'Jest', 'JUnit', 'xUnit'],
-  },
-  {
-    label: 'Colaboración',
-    items: ['GitLab', 'Scrum', 'Jira', 'Confluence'],
-  },
-  {
-    label: 'DevOps / CI-CD',
-    items: ['Docker', 'Git', 'Despliegue automatizado', 'Kubernetes', 'AWS (EC2, RDS, S3)'],
-  },
-];
-
 export default function SkillsSection({ title }: SkillsSectionProps) {
+  const { t, i18n } = useTranslation('lang');
+  const groups = useMemo(
+    () => t('skills.groups', { returnObjects: true }) as SkillGroup[],
+    [i18n.language, t],
+  );
+  const description = t('skills.intro');
+  const counterSuffix = t('skills.counterSuffix');
+
   return (
     <section id="skills" className="scroll-mt-40">
       <div className="section-surface relative overflow-hidden animate-fade-up">
@@ -54,12 +27,10 @@ export default function SkillsSection({ title }: SkillsSectionProps) {
         <div className="absolute -left-32 bottom-[-40%] h-[28rem] w-[28rem] rounded-full bg-cyan-400/10 blur-3xl" aria-hidden />
         <div className="relative flex flex-col gap-4 text-left lg:flex-row lg:items-center lg:justify-between">
           <h2 className="text-3xl font-semibold text-white lg:text-4xl">{title}</h2>
-          <p className="max-w-xl text-sm leading-relaxed text-slate-200">
-            Toolset completo para construir productos escalables: arquitectura, desarrollo, pruebas automatizadas y despliegues resilientes.
-          </p>
+          <p className="max-w-xl text-sm leading-relaxed text-slate-200">{description}</p>
         </div>
         <div className="relative mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {skillGroups.map((group) => (
+          {groups.map((group) => (
             <div
               key={group.label}
               className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 shadow-xl shadow-black/40 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/30"
@@ -68,7 +39,7 @@ export default function SkillsSection({ title }: SkillsSectionProps) {
               <header className="relative z-10 mb-4 flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-white">{group.label}</h3>
                 <span className="rounded-full border border-white/20 bg-white/[0.08] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.35em] text-slate-200">
-                  {String(group.items.length).padStart(2, '0')} skills
+                  {String(group.items.length).padStart(2, '0')} {counterSuffix}
                 </span>
               </header>
               <ul className="relative z-10 mt-2 flex flex-wrap gap-3 text-slate-200">

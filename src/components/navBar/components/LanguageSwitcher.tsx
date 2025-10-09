@@ -1,63 +1,52 @@
 'use client';
+
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
 
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 const languages = [
-  { code: 'en', flag: '/flags/en.svg', alt: 'English' },
-  { code: 'es', flag: '/flags/es.svg', alt: 'Español' },
+  { code: 'en', flag: 'https://flagcdn.com/w40/gb.png', alt: 'English' },
+  { code: 'es', flag: 'https://flagcdn.com/w40/es.png', alt: 'Español' },
 ];
 
 export default function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
   const { i18n } = useTranslation('lang');
   const [mounted, setMounted] = useState(false);
-  const [open, setOpen] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem('language', lng);
-    setOpen(false);
-  };
+    if (!mounted) return;
+    const stored = localStorage.getItem('language');
+    if (stored && stored !== i18n.language) {
+      void i18n.changeLanguage(stored);
+    }
+  }, [mounted, i18n]);
 
   if (!mounted) return null;
 
-  const current = languages.find(l => l.code === i18n.language) || languages[0];
+  const current = languages.find((item) => item.code === i18n.language) || languages[0];
+  const nextLanguage = languages.find((item) => item.code !== current.code)!;
+
+  const toggleLanguage = () => {
+    void i18n.changeLanguage(nextLanguage.code);
+    localStorage.setItem('language', nextLanguage.code);
+  };
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`inline-block ${className}`}>
       <Image
         src={current.flag}
         alt={current.alt}
-        width={24}
-        height={16}
-        onClick={() => setOpen(!open)}
+        width={28}
+        height={18}
+        onClick={toggleLanguage}
         className="cursor-pointer rounded-sm border border-white/20 bg-white/10 p-[2px] transition-transform duration-300 hover:scale-110"
       />
-      {open && (
-        <div className="absolute right-0 mt-2 flex flex-col gap-1 rounded-xl border border-white/10 bg-neutral-950/90 p-2 shadow-lg shadow-black/60 backdrop-blur">
-          {languages
-            .filter(l => l.code !== current.code)
-            .map(l => (
-              <Image
-                key={l.code}
-                src={l.flag}
-                alt={l.alt}
-                width={24}
-                height={16}
-                onClick={() => changeLanguage(l.code)}
-                className="cursor-pointer rounded-sm border border-transparent bg-white/10 p-[2px] transition-transform duration-300 hover:scale-110 hover:border-white/30"
-              />
-            ))}
-        </div>
-      )}
     </div>
   );
 }

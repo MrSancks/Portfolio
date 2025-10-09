@@ -1,7 +1,7 @@
 'use client';
-import './globals.css';
-import { useTranslation } from 'react-i18next';
+
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import NavBar from '@/components/navBar/NavBar';
 import HeroSection from '@/components/portfolio/HeroSection';
 import AboutSection from '@/components/portfolio/AboutSection';
@@ -21,18 +21,21 @@ export default function Home() {
   }, []);
 
   if (!mounted) return null;
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <AnimatedBackground />
       <NavBar />
-      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-16 px-5 pb-32 pt-28 transition-all duration-500 sm:px-8 md:ml-28 md:px-12 md:pt-32 lg:ml-40 lg:max-w-7xl lg:gap-24 lg:px-16 xl:gap-28">
-        <HeroSection title={t('welcome')} subtitle={t('hero_subtitle')} />
-        <AboutSection title={t('about')} content={t('about_text')} />
-        <ExperienceSection title={t('experience')} />
-        <ProjectsSection title={t('projects')} />
-        <SkillsSection title={t('skills')} />
-        <EducationSection title={t('education')} />
-        <ContactSection title={t('contact')} />
+      <main className="relative z-10 flex w-full flex-col pb-32 pt-28 transition-all duration-500 md:pl-32 lg:pl-40">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-20 px-8 sm:px-12 md:px-16 lg:gap-28 lg:px-20 xl:max-w-[1600px] xl:gap-32 xl:px-24">
+          <HeroSection title={t('hero.title')} subtitle={t('hero.subtitle')} />
+          <AboutSection title={t('sections.about')} content={t('about.content')} />
+          <ExperienceSection title={t('sections.experience')} />
+          <ProjectsSection title={t('sections.projects')} />
+          <SkillsSection title={t('sections.skills')} />
+          <EducationSection title={t('sections.education')} />
+          <ContactSection title={t('sections.contact')} />
+        </div>
       </main>
     </div>
   );
